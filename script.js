@@ -90,6 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---- finish swatches: recolour every aluminium profile animation on the page ---- */
+  const swatches = document.querySelectorAll('.swatch[data-profile-color]');
+  if (swatches.length) {
+    swatches.forEach(sw => {
+      sw.addEventListener('click', () => {
+        document.documentElement.style.setProperty('--profile-color', sw.dataset.profileColor);
+        swatches.forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+      });
+    });
+  }
+
   /* ---- scroll to top button ---- */
   const toTop = document.getElementById('toTop');
   if (toTop) {
