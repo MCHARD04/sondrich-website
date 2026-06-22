@@ -3,6 +3,14 @@
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ---- clear the page-in entrance animation once it finishes ----
+     a CSS animation with fill-mode:forwards stays "active" indefinitely,
+     which keeps creating a containing block for position:fixed children
+     (header, mobile menu, floating buttons) instead of the viewport. */
+  document.body.addEventListener('animationend', (e) => {
+    if (e.animationName === 'pageIn') document.body.style.animation = 'none';
+  });
+
   /* ---- header scroll state ---- */
   const header = document.getElementById('siteHeader');
   if (header) {
