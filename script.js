@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
      which keeps creating a containing block for position:fixed children
      (header, mobile menu, floating buttons) instead of the viewport. */
   document.body.addEventListener('animationend', (e) => {
-    if (e.animationName === 'pageIn') document.body.style.animation = 'none';
+    if (e.animationName === 'pageIn') {
+      document.body.style.animation = 'none';
+      document.body.style.opacity = '1';
+    }
   });
 
   /* ---- header scroll state ---- */
